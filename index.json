@@ -1,0 +1,16 @@
+{
+	"puff": {
+		"name": "Puff",
+		"slug": "puff",
+		"entry_name": "smoking sessions",
+		"entries_name": "smoking sessionses",
+		"description": "smoking sessions tracker",
+		"private": false,
+		"icon": "🚬",
+		"color": "#e65c5c",
+		"storage_type": "",
+		"storage": "",
+		"custom_css": "",
+		"charts_placement": ""
+	}
+}
