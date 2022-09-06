@@ -90,9 +90,23 @@
 				"max": 10,
 				"number_edit": "spinner",
 				"number_style": "bar",
-				"bar_style": "discrete"
+				"bar_style": "discrete",
+				"type": "number"
 			},
-			"name": "field2"
+			"name": "icons"
+		},
+		{
+			"type": "expression",
+			"scope": "entry",
+			"settings": {
+				"expression": "icons"
+			},
+			"name": "cigarettecount"
+		},
+		{
+			"type": "expression",
+			"scope": "entry",
+			"settings": {}
 		}
 	],
 	"root": [
@@ -108,7 +122,45 @@
 				"set_pairs": [],
 				"filter_pairs": []
 			}
+		},
+		{
+			"type": "expression",
+			"scope": "root",
+			"settings": {
+				"expression": "duration($now - first(date_time))",
+				"prefix": "Days trying to quit: "
+			}
+		},
+		{
+			"type": "action",
+			"scope": "root",
+			"settings": {
+				"target_preset": "new",
+				"target": "add(entry)",
+				"set_pairs": [
+					{
+						"name": "icons",
+						"value": "2"
+					}
+				],
+				"filter_pairs": [],
+				"label": "Add 2 cigarettes",
+				"appearance": "",
+				"formatting": [],
+				"text_color": "#8e0013"
+			}
 		}
 	],
-	"charts": []
+	"charts": [
+		{
+			"type": "chart",
+			"scope": "charts",
+			"settings": {
+				"type": "bar",
+				"group_by": "day",
+				"aggregate_of": "cigarettecount",
+				"aggregate": "sum"
+			}
+		}
+	]
 }
