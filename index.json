@@ -12,5 +12,19 @@
 		"storage": "",
 		"custom_css": "",
 		"charts_placement": ""
+	},
+	"work-hours": {
+		"name": "Work Hours",
+		"slug": "work-hours",
+		"entry_name": "hours worked",
+		"entries_name": "hours workeds",
+		"description": "hours worked tracker",
+		"private": false,
+		"icon": "👩🏻‍💻",
+		"color": "#0cc4e9",
+		"storage_type": "",
+		"storage": "",
+		"custom_css": "",
+		"charts_placement": ""
 	}
 }
