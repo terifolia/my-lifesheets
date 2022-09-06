@@ -160,6 +160,26 @@
 				"default": "Personal"
 			},
 			"name": "Project"
+		},
+		{
+			"type": "expression",
+			"scope": "entry",
+			"settings": {
+				"expression": "hours(end_date_time - date_time)  * if(Project = \"Personal\", 0, 50)",
+				"visible": "true",
+				"appearance": "",
+				"prefix": "$"
+			},
+			"name": "Money"
+		},
+		{
+			"type": "expression",
+			"scope": "entry",
+			"settings": {
+				"expression": "hours(end_date_time - date_time) ",
+				"visible": "false"
+			},
+			"name": "hours"
 		}
 	],
 	"root": [
@@ -175,7 +195,38 @@
 				"set_pairs": [],
 				"filter_pairs": []
 			}
+		},
+		{
+			"type": "expression",
+			"scope": "root",
+			"settings": {
+				"expression": "sum(Money)",
+				"prefix": "Total Earnings $"
+			},
+			"name": "total"
 		}
 	],
-	"charts": []
+	"charts": [
+		{
+			"type": "chart",
+			"scope": "charts",
+			"settings": {
+				"aggregate_of": "Money",
+				"group_by": "Project",
+				"aggregate": "sum"
+			}
+		},
+		{
+			"type": "chart",
+			"scope": "charts",
+			"settings": {
+				"type": "pie",
+				"aggregate_of": "hours",
+				"group_by": "Project",
+				"aggregate": "sum",
+				"caption": "Hours of Project value",
+				"orientation": "horizontal"
+			}
+		}
+	]
 }
