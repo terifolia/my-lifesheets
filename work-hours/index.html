@@ -26,15 +26,53 @@
 			<span class="app-name">Work Hours</span>
 		</h1>
 		<h2>hours worked tracker</h2>
-		<div class="mv-bar mv-ui"></div>
+		<div class="mv-bar mv-ui"><a href="#entries" class="mv-button custom entries">Entries</a></div>
 	</header>
 
 	<main class="charts-first">
 		<a id=stats></a>
-			
+			<div class="chart-row">
+				<figure data-type="chart" class="chart appearance-stretch type-table" style="min-width: min(300px, 100vw)">
+	
+		<table>
+			<thead>
+				<tr>
+					<th hc-name="a">Project</th>
+					<th hc-name="b">Sum of Money</th>
+				</tr>
+			</thead>
+			<tbody mv-list="chart16" mv-value="sort(groupBy(entry.Money, entry.Project), '$value')">
+				<tr mv-list-item mv-group>
+					<td>[$value]</td>
+					<td>[sum($items)]</td>
+				</tr>
+			</tbody>
+		</table>
+	<figcaption>Sum of Money per Project value</figcaption></figure>
+				<figure data-type="chart" class="chart appearance-stretch type-pie" style="min-width: min(300px, 100vw)">
+	
+	<h-chart type="pie" x="b">
+		<table>
+			<thead>
+				<tr>
+					<th hc-name="a">Project</th>
+					<th hc-name="b">Sum of hours</th>
+				</tr>
+			</thead>
+			<tbody mv-list="chart17" mv-value="sort(groupBy(entry.hours, entry.Project), '$value')">
+				<tr mv-list-item mv-group>
+					<td>[$value]</td>
+					<td>[sum($items)]</td>
+				</tr>
+			</tbody>
+		</table>
+	</h-chart>
+	<figcaption>Hours of Project value</figcaption></figure>
+			</div>
 		<a id=entries></a>
 			<div class="field-row">
 				<button data-type="action" data-show="edit" mv-action="add(entry)">➕ Add hours worked</button>
+				<span property="total" data-type="expression" data-prefix="Total Earnings $" mv-value="sum(Money)"></span>
 			</div>
 		<section mv-list="entry">
 			<article mv-list-item class="entry">
@@ -52,6 +90,8 @@
 				<div property="notes" data-type="property" class="appearance-line type-text"></div>
 				<div class="field-row">
 					<span property="Project" data-type="property" mv-default="Personal" mv-options="Personal, Synergy, Breeze, Quest" class="type-options"></span>
+					<span property="Money" data-type="expression" data-prefix="$" mv-value="hours(end_date_time - date_time)  * if(Project = &quot;Personal&quot;, 0, 50)"></span>
+					<span property="hours" data-type="expression" data-show="false" mv-value="hours(end_date_time - date_time) "></span>
 				</div>
 			</article>
 		</section>
