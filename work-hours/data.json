@@ -20,6 +20,13 @@
 			"end_time": "04:00",
 			"end_date": "2022-08-31",
 			"Project": "Synergy"
+		},
+		{
+			"date": "2022-09-01",
+			"time": "09:00",
+			"end_time": "15:00",
+			"end_date": "2022-09-01",
+			"Project": "Synergy"
 		}
 	]
 }
