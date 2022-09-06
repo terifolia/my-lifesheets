@@ -26,15 +26,37 @@
 			<span class="app-name">Puff</span>
 		</h1>
 		<h2>smoking sessions tracker</h2>
-		<div class="mv-bar mv-ui"></div>
+		<div class="mv-bar mv-ui"><a href="#entries" class="mv-button custom entries">Entries</a></div>
 	</header>
 
 	<main class="charts-first">
 		<a id=stats></a>
-			
+			<div class="chart-row">
+				<figure data-type="chart" class="chart appearance-stretch type-bar" style="min-width: min(300px, 100vw)">
+	
+	<h-chart type="bar" x="b">
+		<table>
+			<thead>
+				<tr>
+					<th hc-name="a">Day</th>
+					<th hc-name="b">Sum of cigarettecount</th>
+				</tr>
+			</thead>
+			<tbody mv-list="chart11" mv-value="groupBy(entry.cigarettecount, readable_datetime(entry.date, 'day'))">
+				<tr mv-list-item mv-group>
+					<td>[$value]</td>
+					<td>[sum($items)]</td>
+				</tr>
+			</tbody>
+		</table>
+	</h-chart>
+	<figcaption>Sum of cigarettecount per day</figcaption></figure>
+			</div>
 		<a id=entries></a>
 			<div class="field-row">
 				<button data-type="action" data-show="edit" mv-action="add(entry)">➕ Add smoking sessions</button>
+				<span data-type="expression" data-prefix="Days trying to quit: " mv-value="duration($now - first(date_time))"></span>
+				<button data-type="action" mv-action="add(icons: 2, entry)" style="color: #8e0013">Add 2 cigarettes</button>
 			</div>
 		<section mv-list="entry">
 			<article mv-list-item class="entry">
@@ -46,7 +68,9 @@
 				</header>
 				<div property="notes" data-type="property" class="appearance-line type-text"></div>
 				<div class="field-row">
-					<span class="field-container" data-suffix="cigarettes"><meter-discrete property="field2" data-type="property" mv-default="1" min="1" max="10" step="1" mv-edit-as="meter" icon="🚬" class="type-number bar"></meter-discrete></span>
+					<span class="field-container" data-suffix="cigarettes"><meter-discrete property="icons" data-type="property" mv-default="1" min="1" max="10" step="1" mv-edit-as="meter" icon="🚬" class="type-number bar"></meter-discrete></span>
+					<span property="cigarettecount" data-type="expression" mv-value="icons"></span>
+					<span data-type="expression" mv-value=""></span>
 				</div>
 			</article>
 		</section>
