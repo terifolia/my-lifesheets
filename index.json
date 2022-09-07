@@ -26,5 +26,19 @@
 		"storage": "",
 		"custom_css": "",
 		"charts_placement": ""
+	},
+	"qc": {
+		"name": "QC",
+		"slug": "qc",
+		"entry_name": "Masks",
+		"entries_name": "Maskses",
+		"description": "Masks tracker",
+		"private": true,
+		"icon": "📝",
+		"color": "#e98d0c",
+		"storage_type": "",
+		"storage": "",
+		"custom_css": "",
+		"charts_placement": ""
 	}
 }
