@@ -27,12 +27,12 @@
 		"custom_css": "",
 		"charts_placement": ""
 	},
-	"qc": {
-		"name": "QC",
-		"slug": "qc",
-		"entry_name": "Masks",
-		"entries_name": "Maskses",
-		"description": "Masks tracker",
+	"masks-operations": {
+		"name": "Masks Operations",
+		"slug": "masks-operations",
+		"entry_name": "OP-001A",
+		"entries_name": "OP-001AS",
+		"description": "OP-001A tracker",
 		"private": true,
 		"icon": "📝",
 		"color": "#e98d0c",
