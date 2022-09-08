@@ -40,5 +40,19 @@
 		"storage": "",
 		"custom_css": "",
 		"charts_placement": ""
+	},
+	"baby": {
+		"name": "Baby?",
+		"slug": "baby",
+		"entry_name": "period",
+		"entries_name": "periods",
+		"description": "period tracker",
+		"private": true,
+		"icon": "🫄🏻",
+		"color": "#5ea419",
+		"storage_type": "",
+		"storage": "",
+		"custom_css": "",
+		"charts_placement": ""
 	}
 }
