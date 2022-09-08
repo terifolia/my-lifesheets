@@ -32,7 +32,8 @@
 				],
 				"prefix": "Start ",
 				"text_color": "#de3e2d",
-				"appearance": "stretch"
+				"appearance": "stretch",
+				"min_date": "[$previous.end_date + 1 * day()]"
 			},
 			"name": "date"
 		},
@@ -44,7 +45,7 @@
 			],
 			"settings": {
 				"type": "date",
-				"default": "[date + 14 day]",
+				"default": "[date + 14 * day()]",
 				"formatting": [
 					"b"
 				],
@@ -65,7 +66,7 @@
 				"type": "date",
 				"prefix": " End ",
 				"visible": "true",
-				"default": "[date + 28 day]",
+				"default": "[date + 28 * day()]",
 				"min_date": "[date]",
 				"formatting": [
 					"b"
