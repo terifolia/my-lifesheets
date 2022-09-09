@@ -19,19 +19,78 @@
 	<script type="module" src="https://projects.verou.me/h-chart/src/h-chart.js"></script>
 	<script type="module" src="https://nudeui.com/index.js"></script>
 </head>
-<body mv-app="baby" class="mv-autoedit" mv-storage="https://github.com/terifolia/my-lifesheets/baby/data.json">
+<body mv-app="lifesheet" class="mv-autoedit" mv-storage="https://github.com/terifolia/my-lifesheets/baby/data.json">
 	<header>
 		<h1>
 			<span class="app-icon">🫄🏻</span>
 			<span class="app-name">Baby?</span>
 		</h1>
 		<h2>period tracker</h2>
-		<div class="mv-bar mv-ui"></div>
+		<div class="mv-bar mv-ui"><a href="#entries" class="mv-button custom entries">Entries</a></div>
 	</header>
 
 	<main class="charts-first">
 		<a id=stats></a>
-			
+			<div class="chart-row">
+				<figure data-type="chart" class="chart appearance-stretch type-bar" style="min-width: min(600px, 100vw)">
+	
+	<h-chart id="chart14" type="bar" x="a">
+		<table>
+			<thead>
+				<tr>
+					<th hc-name="a">Month</th>
+					<th hc-name="b">Average length</th>
+				</tr>
+			</thead>
+			<tbody mv-list="chart14" mv-value="groupBy(map(entry, 'length'), readable_datetime(entry.date, 'month'))">
+				<tr mv-list-item mv-group>
+					<td>[$value]</td>
+					<td>[average($items)]</td>
+				</tr>
+			</tbody>
+		</table>
+	</h-chart><script>chart14.yFormat = $result => {
+						try {
+							let $fn = Mavo.Script.$fn;
+							let $this = Mavo.all[0]?.root.getLiveData() ?? {};
+							return ($fn.duration.call($this, $result, 'days'));
+						}
+						catch (e) {
+							console.warn(e);
+							return $result;
+						}
+					};</script>
+	<figcaption>Average length per month</figcaption></figure>
+				<figure data-type="chart" class="chart appearance-stretch type-bar" style="min-width: min(600px, 100vw)">
+	
+	<h-chart id="chart15" type="bar" x="a">
+		<table>
+			<thead>
+				<tr>
+					<th hc-name="a">Month</th>
+					<th hc-name="b">Average duration_ov</th>
+				</tr>
+			</thead>
+			<tbody mv-list="chart15" mv-value="groupBy(entry.duration_ov, readable_datetime(entry.date, 'month'))">
+				<tr mv-list-item mv-group>
+					<td>[$value]</td>
+					<td>[average($items)]</td>
+				</tr>
+			</tbody>
+		</table>
+	</h-chart><script>chart15.yFormat = $result => {
+						try {
+							let $fn = Mavo.Script.$fn;
+							let $this = Mavo.all[0]?.root.getLiveData() ?? {};
+							return ($fn.duration.call($this, $result, "days"));
+						}
+						catch (e) {
+							console.warn(e);
+							return $result;
+						}
+					};</script>
+	<figcaption>Average duration_ov per month</figcaption></figure>
+			</div>
 		<a id=entries></a>
 			<div class="field-row">
 				<button data-type="action" mv-action="add(entry)">➕ Add period</button>
@@ -39,9 +98,9 @@
 		<section mv-list="entry">
 			<article mv-list-item class="entry">
 				<header class="field-row">
-					<time property="date" data-type="property" data-prefix="Start " mv-default="[$today]" mv-edit-type="inline" mv-editor-type="date" mv-editor-min="[$previous.end_date + 1 * day()]" class="appearance-stretch bold type-date" style="color: #de3e2d"></time>
-					<time property="peak_date" data-type="property" data-prefix="Peak " mv-default="[date + 14 * day()]" mv-edit-type="inline" mv-editor-type="date" class="appearance-stretch bold type-date" style="color: #0008ff"></time>
-					<time property="end_date" data-type="property" data-prefix=" End " mv-default="[date + 28 * day()]" mv-edit-type="inline" mv-editor-type="date" mv-editor-min="[date]" class="appearance-stretch bold type-date"></time>
+					<time property="date" data-type="property" data-prefix="Start " mv-default="[$previous.end_date + 1 * day()]" mv-edit-type="inline" mv-editor-type="date" mv-editor-min="[$previous.end_date + 1 * day()]" class="appearance-stretch bold type-date" style="color: #de3e2d"></time>
+					<time property="peak_date" data-type="property" data-prefix="Peak " mv-default="[date(date + 14 * day())]" mv-edit-type="inline" mv-editor-type="date" class="appearance-stretch bold type-date" style="color: #0008ff"></time>
+					<time property="end_date" data-type="property" data-prefix=" End " mv-default="[date(date + 28 * day())]" mv-edit-type="inline" mv-editor-type="date" mv-editor-min="[date]" class="appearance-stretch bold type-date"></time>
 				</header>
 				<span data-type="spacer" class="appearance-line"></span>
 				<div class="field-row">
