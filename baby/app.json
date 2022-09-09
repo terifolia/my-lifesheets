@@ -239,7 +239,17 @@
 			"settings": {
 				"aggregate": "average",
 				"aggregate_of": "length",
-				"number_format": "",
+				"number_format": "duration($result, days)",
+				"group_by": "year"
+			}
+		},
+		{
+			"type": "chart",
+			"scope": "charts",
+			"settings": {
+				"number_format": "duration($result,days)",
+				"aggregate": "average",
+				"aggregate_of": "duration_ov",
 				"group_by": "year"
 			}
 		}
