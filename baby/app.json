@@ -92,7 +92,7 @@
 				"visible": "false",
 				"expression": "end_date - date"
 			},
-			"name": "length"
+			"name": "Length"
 		},
 		{
 			"type": "expression",
