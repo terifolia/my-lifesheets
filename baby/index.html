@@ -98,7 +98,7 @@
 		<section mv-list="entry">
 			<article mv-list-item class="entry">
 				<header class="field-row">
-					<time property="date" data-type="property" data-prefix="Start " mv-default="[$previous.end_date + 1 * day()]" mv-edit-type="inline" mv-editor-type="date" mv-editor-min="[$previous.end_date + 1 * day()]" class="appearance-stretch bold type-date" style="color: #de3e2d"></time>
+					<time property="date" data-type="property" data-prefix="Start " mv-default="[date($previous.end_date + 1 * day())]" mv-edit-type="inline" mv-editor-type="date" mv-editor-min="[$previous.end_date + 1 * day()]" class="appearance-stretch bold type-date" style="color: #de3e2d"></time>
 					<time property="peak_date" data-type="property" data-prefix="Peak " mv-default="[date(date + 14 * day())]" mv-edit-type="inline" mv-editor-type="date" class="appearance-stretch bold type-date" style="color: #0008ff"></time>
 					<time property="end_date" data-type="property" data-prefix=" End " mv-default="[date(date + 28 * day())]" mv-edit-type="inline" mv-editor-type="date" mv-editor-min="[date]" class="appearance-stretch bold type-date"></time>
 				</header>
