@@ -232,6 +232,16 @@
 				"orientation": "horizontal",
 				"min_width": 600
 			}
+		},
+		{
+			"type": "chart",
+			"scope": "charts",
+			"settings": {
+				"aggregate": "average",
+				"aggregate_of": "length",
+				"number_format": "",
+				"group_by": "year"
+			}
 		}
 	]
 }
