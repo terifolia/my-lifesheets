@@ -99,14 +99,31 @@
 					<th hc-name="b">Average length</th>
 				</tr>
 			</thead>
-			<tbody mv-list="chart17" mv-value="groupBy(map(entry, 'length'), readable_datetime(entry.date, 'year'))">
+			<tbody mv-list="chart16" mv-value="groupBy(map(entry, 'length'), readable_datetime(entry.date, 'year'))">
 				<tr mv-list-item mv-group>
 					<td>[$value]</td>
-					<td>[average($items)]</td>
+					<td property="$result" datatype="number" mv-attribute="data-value" data-value="[average($items)]">[duration($result, days)]</td>
 				</tr>
 			</tbody>
 		</table>
 	<figcaption>Average length per year</figcaption></figure>
+				<figure data-type="chart" class="chart appearance-stretch type-table" style="min-width: min(300px, 100vw)">
+	
+		<table>
+			<thead>
+				<tr>
+					<th hc-name="a">Year</th>
+					<th hc-name="b">Average duration_ov</th>
+				</tr>
+			</thead>
+			<tbody mv-list="chart18" mv-value="groupBy(entry.duration_ov, readable_datetime(entry.date, 'year'))">
+				<tr mv-list-item mv-group>
+					<td>[$value]</td>
+					<td property="$result" datatype="number" mv-attribute="data-value" data-value="[average($items)]">[duration($result,days)]</td>
+				</tr>
+			</tbody>
+		</table>
+	<figcaption>Average duration_ov per year</figcaption></figure>
 			</div>
 		<a id=entries></a>
 			<div class="field-row">
