@@ -1,0 +1,169 @@
+{
+	"app": {
+		"name": "Masks Operations",
+		"slug": "masks-operations",
+		"entry_name": "OP-001A",
+		"entries_name": "OP-001AS",
+		"description": "OP-001A tracker",
+		"private": false,
+		"icon": "📝",
+		"color": "#e98d0c",
+		"storage_type": "",
+		"storage": "",
+		"custom_css": "",
+		"charts_placement": ""
+	},
+	"temporal": {
+		"times": "",
+		"ranges": ""
+	},
+	"entry": [
+		{
+			"type": "property",
+			"scope": "entry",
+			"settings": {
+				"type": "text",
+				"formatting": [
+					"b"
+				],
+				"text_color": "#589a28",
+				"default": "[$previous.Lot_number]"
+			},
+			"name": "Lot_number"
+		},
+		{
+			"type": "property",
+			"scope": "entry",
+			"settings": {
+				"type": "text"
+			},
+			"name": "SKU"
+		},
+		{
+			"type": "property",
+			"scope": "entry",
+			"flags": [
+				"temporal"
+			],
+			"settings": {
+				"type": "date",
+				"default": "[$today]",
+				"formatting": [
+					"b"
+				],
+				"prefix": "Date of Manufacture: "
+			},
+			"name": "date"
+		},
+		{
+			"type": "spacer",
+			"scope": "entry",
+			"settings": {
+				"appearance": "line"
+			}
+		},
+		{
+			"type": "property",
+			"scope": "entry",
+			"settings": {
+				"prefix": "Anticipitated yield: ",
+				"max": 50000,
+				"number_edit": "spinner",
+				"step": 1000,
+				"min": 0,
+				"number_style": "number",
+				"suffix": "masks"
+			},
+			"name": "A_yield"
+		},
+		{
+			"type": "spacer",
+			"scope": "entry",
+			"settings": {
+				"appearance": "line"
+			}
+		},
+		{
+			"type": "property",
+			"scope": "entry",
+			"settings": {
+				"prefix": "Actual yield: ",
+				"suffix": "masks",
+				"max": 25000,
+				"min": 0,
+				"step": 1000
+			},
+			"name": "act_yield"
+		},
+		{
+			"type": "spacer",
+			"scope": "entry",
+			"settings": {
+				"appearance": "line"
+			}
+		},
+		{
+			"type": "expression",
+			"scope": "entry",
+			"settings": {
+				"prefix": "Percent yield: ",
+				"suffix": "%",
+				"expression": "(act_yield / A_yield)*100"
+			},
+			"name": "percent_yield"
+		},
+		{
+			"type": "spacer",
+			"scope": "entry",
+			"settings": {
+				"appearance": "line"
+			}
+		},
+		{
+			"type": "property",
+			"scope": "entry",
+			"settings": {
+				"prefix": "Lot number (rolls): ",
+				"type": "text"
+			},
+			"name": "Lot_no_rolls"
+		},
+		{
+			"type": "property",
+			"scope": "entry",
+			"settings": {
+				"type": "text",
+				"appearance": "line",
+				"multiline": true
+			},
+			"name": "notes"
+		}
+	],
+	"root": [
+		{
+			"type": "action",
+			"scope": "root",
+			"settings": {
+				"visible": "edit",
+				"label": "➕ Add OP-001A",
+				"target": "add(entry)",
+				"target_preset": "new",
+				"appearance": "",
+				"set_pairs": [],
+				"filter_pairs": []
+			}
+		}
+	],
+	"charts": [
+		{
+			"type": "chart",
+			"scope": "root",
+			"settings": {
+				"aggregate": "sum",
+				"aggregate_of": "act_yield",
+				"group_by": "Lot_no_rolls",
+				"caption": ""
+			}
+		}
+	]
+}
