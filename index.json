@@ -33,7 +33,7 @@
 		"entry_name": "OP-001A",
 		"entries_name": "OP-001AS",
 		"description": "OP-001A tracker",
-		"private": true,
+		"private": false,
 		"icon": "📝",
 		"color": "#e98d0c",
 		"storage_type": "",
