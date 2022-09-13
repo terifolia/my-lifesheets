@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Masks Operations: OP-001A tracker</title>
+	<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text style="font-size: 80px" x="50%" y=".85em" dominant-baseline="middle" text-anchor="middle">📝</text></svg>'>
+	<link rel="stylesheet" href="https://get.mavo.io/mavo.css">
+	<link rel="stylesheet" href="../style.css">
+	<style>
+		:root {
+			--accent-color: #e98d0c;
+			--icon: "📝";
+		}
+		
+	</style>
+	<link rel="manifest" href="manifest.json">
+	<script type="module" src="https://projects.verou.me/h-chart/src/h-chart.js"></script>
+	<script type="module" src="https://nudeui.com/index.js"></script>
+</head>
+<body mv-app="lifesheet" class="mv-autoedit" mv-storage="https://github.com/terifolia/my-lifesheets/masks-operations/data.json">
+	<header>
+		<h1>
+			<span class="app-icon">📝</span>
+			<span class="app-name">Masks Operations</span>
+		</h1>
+		<h2>OP-001A tracker</h2>
+		<div class="mv-bar mv-ui"><a href="#entries" class="mv-button custom entries">Entries</a></div>
+	</header>
+
+	<main class="charts-first">
+		<a id=stats></a>
+			<div class="chart-row">
+				<figure data-type="chart" class="chart appearance-stretch type-table" style="min-width: min(300px, 100vw)">
+	
+		<table>
+			<thead>
+				<tr>
+					<th hc-name="a">Lot_no_rolls</th>
+					<th hc-name="b">Sum of act_yield</th>
+				</tr>
+			</thead>
+			<tbody mv-list="chart14" mv-value="sort(groupBy(entry.act_yield, entry.Lot_no_rolls), '$value')">
+				<tr mv-list-item mv-group>
+					<td>[$value]</td>
+					<td>[sum($items)]</td>
+				</tr>
+			</tbody>
+		</table>
+	<figcaption></figcaption></figure>
+			</div>
+		<a id=entries></a>
+			<div class="field-row">
+				<button data-type="action" data-show="edit" mv-action="add(entry)">➕ Add OP-001A</button>
+			</div>
+		<section mv-list="entry">
+			<article mv-list-item class="entry">
+				<header class="field-row">
+					<span property="Lot_number" data-type="property" mv-default="[$previous.Lot_number]" class="bold type-text" style="color: #589a28"></span>
+					<span property="SKU" data-type="property" class="type-text"></span>
+					<time property="date" data-type="property" data-prefix="Date of Manufacture: " mv-default="[$today]" mv-edit-type="inline" mv-editor-type="date" class="bold type-date"></time>
+				</header>
+				<span data-type="spacer" class="appearance-line"></span>
+				<div class="field-row">
+					<span property="A_yield" data-type="property" data-prefix="Anticipitated yield: " data-suffix="masks" mv-default="25000" mv-editor-type="number" mv-editor-min="0" mv-editor-max="50000" mv-editor-step="1000" class="type-number"></span>
+				</div>
+				<span data-type="spacer" class="appearance-line"></span>
+				<div class="field-row">
+					<span property="act_yield" data-type="property" data-prefix="Actual yield: " data-suffix="masks" mv-default="12000" mv-editor-type="number" mv-editor-min="0" mv-editor-max="25000" mv-editor-step="1000" class="type-number"></span>
+				</div>
+				<span data-type="spacer" class="appearance-line"></span>
+				<div class="field-row">
+					<span property="percent_yield" data-type="expression" data-prefix="Percent yield: " data-suffix="%" mv-value="(act_yield / A_yield)*100"></span>
+				</div>
+				<span data-type="spacer" class="appearance-line"></span>
+				<div class="field-row">
+					<span property="Lot_no_rolls" data-type="property" data-prefix="Lot number (rolls): " class="type-text"></span>
+				</div>
+				<div property="notes" data-type="property" class="appearance-line type-text"></div>
+			</article>
+		</section>
+	</main>
+
+	<script src="https://get.mavo.io/mavo.js"></script>
+	<script>
+		Mavo.Functions.process_visible = function (value) {
+			value = Mavo.value(value);
+			return ["true", "false", "edit", "read"].includes(value) ? value : Boolean(value);
+		}; 
+	</script>
+</body>
+</html>
